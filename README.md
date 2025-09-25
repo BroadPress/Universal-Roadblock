@@ -1,16 +1,36 @@
-# React + Vite
+## Universal Roadblock
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Instructions and information
 
-Currently, two official plugins are available:
+1. Current Date & File Naming
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The component gets today’s date using:
 
-## React Compiler
+```
+const today = new Date();
+const day = today.getDate();
+const month = monthNames[today.getMonth()];
+```
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Timers
 
-## Expanding the ESLint configuration
+- Force Close Timer (`timeLeft`) → 20s
+  After 20 seconds, the roadblock automatically closes (whether user interacts or not).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Display Close Button Timer (`displayTimeLeft`) → 10s
+  The close button (the `X`) is initially hidden and only becomes clickable after 10 seconds. Until then, it shows a countdown number which is only clickable after 10 seconds.
+
+3. Image Loading & Error Handling
+
+- The `<img>` tag attempts to load the image based on today’s day and month folder.
+- If the image is missing, the onError handler tries:
+  1. First fallback → `/roadblock/default.jpg`
+  2. If even the default fails → calls `handleImageError()` which closes the popup.
+
+## Where are code fetched from
+
+Code points to:
+
+```
+src={`/roadblock/${month}/${day}.jpg`}
+```

@@ -113,7 +113,7 @@ const RoadBlock = ({ onClose }) => {
             </button>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img
-                src={`../../public/roadblock/${month}/${day}.jpg`}
+                src={`/roadblock/${month}/${day}.jpg`}
                 onError={(e) => {
                   const originalSrc = e.currentTarget.src;
 
