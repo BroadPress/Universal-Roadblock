@@ -27,7 +27,7 @@ const month = monthNames[today.getMonth()];
   1. First fallback → `/roadblock/default.jpg`
   2. If even the default fails → calls `handleImageError()` which closes the popup.
 
-# Where are code fetched from
+## Where are code fetched from
 
 Code points to:
 
